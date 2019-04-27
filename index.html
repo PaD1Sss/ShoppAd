@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link:twig><stylesheet/header:twig>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>заголовок</h1>
-    
-</body>
-</html>
+// Version
+define('VERSION', '3.0.3.2');
+
+// Configuration
+if (is_file('config.php')) {
+	require_once('config.php');
+}
+
+// Install
+if (!defined('DIR_APPLICATION')) {
+	header('Location: install/index.php');
+	exit;
+}
+
+// Startup
+require_once(DIR_SYSTEM . 'startup.php');
+
+start('catalog');
